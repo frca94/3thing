@@ -20,7 +20,7 @@ namespace ThreeThingGame
         }
         public void Jump() //TODO: Make it update with the frames
         {
-            velocity = 800;
+            velocity = 20;
             /*
             if (jumpHeight > 0)
             {
@@ -37,11 +37,11 @@ namespace ThreeThingGame
         {
             //if (this.velocity >= 0)
             //{
-                this.velocity -= gravity;
-                if (this.position.Y <= 800)
-                {
-                    this.position.Y += velocity;
-                }
+            this.velocity = this.velocity - gravity;
+            //if (this.position.Y <= 800)
+            //{
+            this.position.Y = this.position.Y - velocity;
+            //}
             //}
         }
     }
