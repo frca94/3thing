@@ -50,6 +50,8 @@ namespace ThreeThingGame
 
         Robot robot;
 
+        Foreground foreground;
+
         List<Robot> robotsList = new List<Robot>();
 
 
@@ -96,6 +98,9 @@ namespace ThreeThingGame
 
             //Background setup
             background = new Background(true, new Rectangle(0, 0, 1920, 1080), Content.Load<Texture2D>("IMG/background_highres_default"));
+
+            //Foreground setup
+            foreground = new Foreground(true, new Rectangle(0, 0, 1920, 1080), Content.Load<Texture2D>("IMG/background_highres_default"));
 
             //Player setup
             player = new Player(true, new Rectangle(600, 800, 64, 120), Content.Load<Texture2D>("IMG/player"));
@@ -155,6 +160,19 @@ namespace ThreeThingGame
                     robot.ApplyGravity();
                 }*/
 
+                if ((robot.position.X > player.position.X && robot.position.X < player.position.X + robot.alertDistance) ||
+                    (robot.position.X < player.position.X && robot.position.X > player.position.X - robot.alertDistance))
+                {
+                    // Robot is alerted. 
+                    if (player.position.X > robot.position.X)
+                    {
+                        robot.position.X = robot.position.X + robot.movespeed;
+                    }
+                    if (player.position.X < robot.position.X)
+                    {
+                        robot.position.X = robot.position.X - robot.movespeed;
+                    }
+                }
             }
 
             //Exit Program
