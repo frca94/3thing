@@ -21,10 +21,10 @@ namespace ThreeThingGame
             velocity = 20;
         }
 
-        public void ApplyPhysics()
+        public void ApplyPhysics(Foreground foreground) //TODO: Passing in the foreground is inefficient, needs to be changed
         {
             velocity = velocity - gravity; //apply gravity acceleration
-            for (int i = 0; i < texture.Width; i++)
+            for (int i = 0; i < texture.Width / 5; i++)
             {
                 if (foreground.CheckCollisions(i, position.Height) == true) //Need to instance foreground
                 {

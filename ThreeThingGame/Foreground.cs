@@ -19,8 +19,8 @@ namespace ThreeThingGame
 
         public bool CheckCollisions(int x, int y)
         {
-            Vector2 coords = new Vector2((int)x % texture.Width, y / texture.Width); //Get x and y coordinates from 1D array //TODO: is cast needed?
-            if (pixelColours[x*y].A != 1) //if pixel is transparent
+            //Vector2 coords = new Vector2((int)x % texture.Width, y / texture.Width); //Get x and y coordinates from 1D array //TODO: is cast needed?
+            if (pixelColours[x*y].A != 0) //if pixel is transparent
             {
                 //Collide
                 return true;

@@ -48,10 +48,11 @@ namespace ThreeThingGame
         //Player
         Player player;
 
-        Robot robot;
-
+        //Foreground
         Foreground foreground;
 
+        Robot robot;
+        //List of robots for applying behaviour via for each loop
         List<Robot> robotsList = new List<Robot>();
 
 
@@ -100,7 +101,7 @@ namespace ThreeThingGame
             background = new Background(true, new Rectangle(0, 0, 1920, 1080), Content.Load<Texture2D>("IMG/background_highres_default"));
 
             //Foreground setup
-            foreground = new Foreground(true, new Rectangle(0, 0, 1920, 1080), Content.Load<Texture2D>("IMG/background_highres_default"));
+            foreground = new Foreground(true, new Rectangle(0, 0, 10000, 500), Content.Load<Texture2D>("IMG/foreground"));
 
             //Player setup
             player = new Player(true, new Rectangle(600, 800, 64, 120), Content.Load<Texture2D>("IMG/player"));
@@ -153,7 +154,7 @@ namespace ThreeThingGame
                     player.Jump();
                 }
 
-                player.ApplyPhysics();
+                player.ApplyPhysics(foreground);
 
                 /*foreach (Robot robot in robotsList)
                 {
