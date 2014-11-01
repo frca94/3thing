@@ -18,31 +18,15 @@ namespace ThreeThingGame
         {
 
         }
-        public void Jump() //TODO: Make it update with the frames
+        public void Jump()
         {
             velocity = 20;
-            /*
-            if (jumpHeight > 0)
-            {
-                return;
-            }
-            if (jumpHeight < maxJumpHeight)
-            {
-                this.position.Y -= 20;
-                jumpHeight += 20;
-            }*/
         }
 
         public void ApplyPhysics()
         {
-            //if (this.velocity >= 0)
-            //{
-            this.velocity = this.velocity - gravity;
-            //if (this.position.Y <= 800)
-            //{
-            this.position.Y = this.position.Y - velocity;
-            //}
-            //}
+            velocity = velocity - gravity; //apply gravity acceleration
+            position.Y = position.Y - velocity;
         }
     }
 }
