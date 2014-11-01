@@ -64,8 +64,8 @@ namespace ThreeThingGame
             Content.RootDirectory = "Content";
 
             //This is the actual resolution of the display
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 1900;
+            graphics.PreferredBackBufferHeight = 1000;
 
         }
 
@@ -101,7 +101,7 @@ namespace ThreeThingGame
             background = new Background(true, new Rectangle(0, 0, 1920, 1080), Content.Load<Texture2D>("IMG/background_highres_default"));
 
             //Foreground setup
-            foreground = new Foreground(true, new Rectangle(0, 0, 10000, 500), Content.Load<Texture2D>("IMG/foreground"));
+            foreground = new Foreground(true, new Rectangle(0, VirtualScreenHeight - 500, 10000, 500), Content.Load<Texture2D>("IMG/foreground"));
 
             //Player setup
             player = new Player(true, new Rectangle(600, 800, 64, 120), Content.Load<Texture2D>("IMG/player"));
@@ -190,6 +190,7 @@ namespace ThreeThingGame
         protected override void Draw(GameTime gameTime)
         {
             //Does matrix multiplication to actually upscale/downscale display
+            spriteBatch.GraphicsDevice.Clear(Color.White);
             var scaleMatrix = Matrix.CreateScale(screenScale);
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, scaleMatrix);
 
@@ -201,6 +202,10 @@ namespace ThreeThingGame
                 if (background.isActive == true)
                 {
                     spriteBatch.Draw(background.texture, background.position, new Rectangle(0, 0, 1920, 1080), Color.White);
+                }
+                if (foreground.isActive == true)
+                {
+                    spriteBatch.Draw(foreground.texture, foreground.position, new Rectangle(0, 0, 10000, 500), Color.White);
                 }
                 if (player.isActive == true)
                 {

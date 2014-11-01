@@ -11,6 +11,7 @@ namespace ThreeThingGame
     {
         private int velocity;
         public static int gravity = 1; //9.81 rounded ;)
+        private bool isJumping = false;
         public Actor(bool inIsActive, Rectangle inPosition, Texture2D inTexture)
             : base(inIsActive, inPosition, inTexture)
         {
@@ -18,20 +19,30 @@ namespace ThreeThingGame
         }
         public void Jump()
         {
-            velocity = 20;
+            if (!isJumping) //Can't jump in mid air
+            {
+                velocity = 20;
+                isJumping = true;
+            }
         }
 
         public void ApplyPhysics(Foreground foreground) //TODO: Passing in the foreground is inefficient, needs to be changed
         {
+
             velocity = velocity - gravity; //apply gravity acceleration
-            for (int i = 0; i < texture.Width / 5; i++)
+            //for (int i = 0; i < texture.Width / 5; i++)
+            //{
+            //if (foreground.CheckCollisions(i, position.Height) == true) //Need to instance foreground
+            if (position.Y > 800)
             {
-                if (foreground.CheckCollisions(i, position.Height) == true) //Need to instance foreground
-                {
-                    return;
-                }
+                position.Y = 800;
+                velocity = 0;
+                isJumping = false;
             }
-            position.Y = position.Y - velocity;
+            else
+            {
+                position.Y = position.Y - velocity;
+            }
         }
     }
 }

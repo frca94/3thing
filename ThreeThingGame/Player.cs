@@ -14,7 +14,7 @@ namespace ThreeThingGame
         public Player(bool inIsActive, Rectangle inPosition, Texture2D inTexture)
             : base(inIsActive, inPosition, inTexture)
         {
-            movespeed = 3;
+            movespeed = 5;
 
         }
 
