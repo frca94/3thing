@@ -155,23 +155,6 @@ namespace ThreeThingGame
                     robot.ApplyGravity();
                 }*/
 
-                
-
-                if ((robot.position.X > player.position.X && robot.position.X < player.position.X + robot.alertDistance ) ||
-                    (robot.position.X < player.position.X && robot.position.X > player.position.X - robot.alertDistance))
-                {
-                    // Robot is alerted. 
-                    if (player.position.X > robot.position.X)
-                    {
-                        robot.position.X = robot.position.X + robot.movespeed;
-                    }
-                    if (player.position.X < robot.position.X)
-                    {
-                        robot.position.X = robot.position.X - robot.movespeed;
-                    }
-                }
-
-
             }
 
             //Exit Program

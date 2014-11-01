@@ -9,7 +9,9 @@ namespace ThreeThingGame
 {
     class Actor : Drawable
     {
+        private int maxJumpHeight = 150;
         private int velocity;
+        int jumpHeight;
         public static int gravity = 1; //9.81 rounded ;)
         public Actor(bool inIsActive, Rectangle inPosition, Texture2D inTexture)
             : base(inIsActive, inPosition, inTexture)
@@ -35,7 +37,7 @@ namespace ThreeThingGame
         {
             //if (this.velocity >= 0)
             //{
-            //this.velocity = this.velocity - gravity;
+            this.velocity = this.velocity - gravity;
             //if (this.position.Y <= 800)
             //{
             this.position.Y = this.position.Y - velocity;
